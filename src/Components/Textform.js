@@ -16,8 +16,16 @@ export default function Textform(props) {
         setText(m)
     }
 
+    const speak = ()=>{
+        let msg = new SpeechSynthesisUtterance();
+        msg.text = text;
+        window.speechSynthesis.speak(msg);
+    }
+
     
     const [text,setText] = useState("enter text here");
+    
+
   return (
     <>
         <div className="container">
@@ -31,7 +39,10 @@ export default function Textform(props) {
             </button>
             <button className='btn btn-primary mx-1 ' onClick={handlelowclick}>
                 Convert to Lower case
-            </button>
+           </button>
+           <button className='btn btn-primary mx-1 ' onClick={speak}>
+                Speech
+           </button>
         </div>
         <div className='container'>
             <h2>Your Text Sumary</h2>
